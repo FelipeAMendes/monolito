@@ -12,10 +12,10 @@ describe("ProductRepository test", () => {
       dialect: "sqlite",
       storage: ":memory:",
       logging: false,
-      sync: { force: true }
+      sync: { force: true },
     });
 
-    sequelize.addModels([ProductModel]);
+    await sequelize.addModels([ProductModel]);
     await sequelize.sync();
   });
 
@@ -30,9 +30,8 @@ describe("ProductRepository test", () => {
       name: "Product 1",
       description: "Product 1 description",
       purchasePrice: 100,
-      stock: 10
+      stock: 10,
     };
-
     const product = new Product(productProps);
     const productRepository = new ProductRepository();
     await productRepository.add(product);
@@ -61,7 +60,7 @@ describe("ProductRepository test", () => {
       purchasePrice: 100,
       stock: 10,
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
     });
 
     // Act
